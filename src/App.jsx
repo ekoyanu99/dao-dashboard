@@ -36,9 +36,9 @@ const App = () => {
       try {
         const proposals = await vote.getAll();
         setProposals(proposals);
-        console.log("🌈 Proposals:", proposals);
+        // console.log("🌈 Proposals:", proposals);
       } catch (error) {
-        console.log("failed to get proposals", error);
+        // console.log("failed to get proposals", error);
       }
     };
     getAllProposals();
@@ -58,9 +58,9 @@ const App = () => {
         const hasVoted = await vote.hasVoted(proposals[0].proposalId, address);
         setHasVoted(hasVoted);
         if (hasVoted) {
-          console.log("🥵 User has already voted");
+          // console.log("🥵 User has already voted");
         } else {
-          console.log("🙂 User has not voted yet");
+          // console.log("🙂 User has not voted yet");
         }
       } catch (error) {
         console.error("Failed to check if wallet has voted", error);
@@ -78,7 +78,7 @@ const App = () => {
       try {
         const memberAddresses = await editionDrop.history.getAllClaimerAddresses(0);
         setMemberAddresses(memberAddresses);
-        console.log("🚀 Members addresses", memberAddresses);
+        // console.log("🚀 Members addresses", memberAddresses);
       } catch (error) {
         console.error("failed to get member list", error);
       }
@@ -96,7 +96,7 @@ const App = () => {
       try {
         const amounts = await token.history.getAllHolderBalances();
         setMemberTokenAmounts(amounts);
-        console.log("👜 Amounts", amounts);
+        // console.log("👜 Amounts", amounts);
       } catch (error) {
         console.error("failed to get member balances", error);
       }
@@ -125,10 +125,10 @@ const App = () => {
         const balance = await editionDrop.balanceOf(address, 0);
         if (balance.gt(0)) {
           setHasClaimedNFT(true);
-          console.log("🌟 this user has a membership NFT!");
+          // console.log("🌟 this user has a membership NFT!");
         } else {
           setHasClaimedNFT(false);
-          console.log("😭 this user doesn't have a membership NFT.");
+          // console.log("😭 this user doesn't have a membership NFT.");
         }
       } catch (error) {
         setHasClaimedNFT(false);
@@ -155,7 +155,7 @@ const App = () => {
     try {
       setisClaiming(true);
       await editionDrop.claim("0", 1);
-      console.log(`🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${editionDrop.getAddress()}/0`);
+      // console.log(`🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${editionDrop.getAddress()}/0`);
       setHasClaimedNFT(true);
     } catch (error) {
       setHasClaimedNFT(false);
@@ -275,7 +275,7 @@ const App = () => {
                       // if we get here that means we successfully voted, so let's set the "hasVoted" state to true
                       setHasVoted(true);
                       // and log out a success message
-                      console.log("successfully voted");
+                      // console.log("successfully voted");
                     } catch (err) {
                       console.error("failed to execute votes", err);
                     }
